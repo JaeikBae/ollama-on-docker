@@ -1,3 +1,4 @@
+sudo docker build -t ollama .
 sudo docker run --rm \
 	-v ./data/root:/root \
 	-v ./data/db:/ws/open-webui/backend/data \
