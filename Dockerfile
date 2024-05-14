@@ -49,5 +49,9 @@ RUN sed -i '1i __import__("pysqlite3")' /usr/local/lib/python3.9/dist-packages/c
 RUN sed -i '2i import sys' /usr/local/lib/python3.9/dist-packages/chromadb/__init__.py
 RUN sed -i '3i sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")' /usr/local/lib/python3.9/dist-packages/chromadb/__init__.py
 
-CMD ["ollama", "serve", "&&", "bash", "start.sh"]
+RUN echo "ollama serve &" > serve.sh
+RUN echo "bash start.sh" >> serve.sh
+
+CMD ["bash", "serve.sh"]
+
 
