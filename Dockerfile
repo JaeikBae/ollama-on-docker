@@ -45,6 +45,9 @@ RUN ln -sf /usr/bin/python3.9 /usr/bin/python3
 WORKDIR /ws/open-webui/backend
 RUN pip3 install -r requirements.txt
 
+RUN pip3 uninstall -y protobuf
+RUN pip3 install protobuf==3.19.4
+
 RUN pip3 install google-generativeai
 RUN pip3 install pysqlite3-binary
 RUN sed -i '1i __import__("pysqlite3")' /usr/local/lib/python3.9/dist-packages/chromadb/__init__.py
